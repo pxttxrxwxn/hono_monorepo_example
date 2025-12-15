@@ -1,17 +1,17 @@
-import type { IUser } from "../entity/user.js"
+import type {IUser, IUserEntity} from "../entity/user.js"
 
 
 export interface IUserRepository {
 
     // Read
-    findAll(): Promise<IUser[]>
-    findById(id: number): Promise<IUser | null>
+    findAll(): Promise<IUserEntity[]>
+    findById(id: number): Promise<IUserEntity>
 
     // Create
-    create(user: IUser): Promise<Partial<IUser>>
+    create(user: IUser): Promise<IUserEntity>
 
     // Update
-    update(id: number, user: Partial<IUser>): Promise<IUser>
+    update(id: number, user: Partial<IUserEntity>): Promise<IUserEntity>
 
     // Delete
     delete(id: number): Promise<boolean>

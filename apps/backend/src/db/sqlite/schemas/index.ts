@@ -1,8 +1,7 @@
-import type { IUser } from "@repo/domain/entity/user.js";
+import type {IUserEntity} from "@repo/domain/entity/user.js";
 import { int, sqliteTable, text, type SQLiteColumnBuilderBase } from "drizzle-orm/sqlite-core";
-import { type InferSelectModel } from "drizzle-orm"
 
-const userSchema: Record<keyof IUser, SQLiteColumnBuilderBase> = {
+const userSchema: Record<keyof IUserEntity, SQLiteColumnBuilderBase> = {
     id: int().primaryKey({ autoIncrement: true }),
     username: text().unique().notNull(),
     password: text().notNull(),
