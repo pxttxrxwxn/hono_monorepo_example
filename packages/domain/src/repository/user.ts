@@ -1,3 +1,5 @@
+// ทำอะไรได้บ้าง
+
 import type {IUser, IUserEntity} from "../entity/user.js"
 
 
