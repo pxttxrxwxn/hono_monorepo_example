@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "@hono/zod-openapi"
 import { type IUser } from "../entity/user.js"
 
 type CreateUserRequestType = Partial<Record<keyof IUser, unknown>> | { password_confirmation: string }
