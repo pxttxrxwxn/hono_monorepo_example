@@ -1,6 +1,7 @@
 import type { IUser } from "@repo/domain/entity/user.js";
 import { int, sqliteTable, text, type SQLiteColumnBuilderBase } from "drizzle-orm/sqlite-core";
 import { type InferSelectModel } from "drizzle-orm"
+import type {ISession} from "@repo/domain/entity/session.js";
 
 const userSchema: Record<keyof IUser, SQLiteColumnBuilderBase> = {
     id: int().primaryKey({ autoIncrement: true }),
@@ -11,3 +12,10 @@ const userSchema: Record<keyof IUser, SQLiteColumnBuilderBase> = {
 
 export const users = sqliteTable("users_table", userSchema);
 
+const sessionSchema : Record<keyof ISession, SQLiteColumnBuilderBase> = {
+    id : int().primaryKey({autoIncrement : true}),
+    token : text().notNull(),
+    user_id : int().notNull().references(()=> users.id),
+}
+
+export const sessions = sqliteTable("sessions_table", sessionSchema);

@@ -4,4 +4,5 @@ export interface IUserService {
 
     findAllUser() : Promise<UserDto[]>
     create(userDto : UserCreateDto) : Promise<UserDto>
+    findById(userId : number) : Promise<UserDto|null>
 }
