@@ -3,7 +3,7 @@ import type { IUserRepository } from "@repo/domain/repository/user.js";
 
 import { db } from "../../db/sqlite/index.js"
 import { users } from "../../db/sqlite/schemas/index.js";
-import { eq } from "drizzle-orm";
+import {and, eq} from "drizzle-orm";
 
 export class UserRepositorySqlite implements IUserRepository {
 
@@ -27,4 +27,13 @@ export class UserRepositorySqlite implements IUserRepository {
     }
 
 
+    async checkUsernameAndPassword(username: string, password: string) {
+        let [user] = await db.select().from(users)
+            .where(and(
+                eq(users.username, username),
+                eq(users.password, password)
+            )).limit(1)
+
+        return user as IUser
+    }
 }

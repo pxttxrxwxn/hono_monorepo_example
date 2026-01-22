@@ -1,6 +1,22 @@
 ###
-GET http://localhost:3000/api/users
+#me
+POST http://localhost:3000/api/me
+Content-Type: application/json
+Authorization: Bearer c7adcf03-635c-459d-9b95-57f3556f1936
 
+###
+#login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "username" : "admin",
+    "password" : "admin1234"
+}
+
+
+###
+GET http://localhost:3000/api/users
 ###
 //for wrong data
 POST http://localhost:3000/api/users
